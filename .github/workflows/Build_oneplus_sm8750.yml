@@ -391,7 +391,7 @@ jobs:
             done
             [ -z "$KSU_API_VERSION" ] && KSU_API_VERSION="4.1.0"
             echo "KSU_API_VERSION=$KSU_API_VERSION" >> $GITHUB_ENV
-            VERSION_DEFINITIONS=$'define get_ksu_version_full\nv\\$1-'"$GIT_COMMIT_HASH"$'-TG@qdykernel\nendef\n\nKSU_VERSION_API := '"$KSU_API_VERSION"$'\nKSU_VERSION_FULL := v'"$KSU_API_VERSION"$'-'"$GIT_COMMIT_HASH"$'-TG@qdykernel'
+            VERSION_DEFINITIONS=$'define get_ksu_version_full\nv\\$1-'"$GIT_COMMIT_HASH"$'-TG@Ricardo\nendef\n\nKSU_VERSION_API := '"$KSU_API_VERSION"$'\nKSU_VERSION_FULL := v'"$KSU_API_VERSION"$'-'"$GIT_COMMIT_HASH"$'-TG@Ricardo'
             
             sed -i '/define get_ksu_version_full/,/endef/d' kernel/Kbuild
             sed -i '/KSU_VERSION_API :=/d' kernel/Kbuild
@@ -406,7 +406,7 @@ jobs:
             echo "ksuver=$KSU_VERSION" >> $GITHUB_OUTPUT
             grep -A10 "REPO_OWNER" kernel/Kbuild
             grep "KSU_VERSION_FULL" kernel/Kbuild
-            echo "SukiSU版本号: v${KSU_API_VERSION}-${GIT_COMMIT_HASH}-TG@qdykernel"
+            echo "SukiSU版本号: v${KSU_API_VERSION}-${GIT_COMMIT_HASH}-TG@Ricardo"
           fi
 
             
@@ -431,7 +431,7 @@ jobs:
           echo "CONFIG_KPM=n" >> ./common/arch/arm64/configs/gki_defconfig
           
           if [ "${{ env.KSU_TYPE }}" == 'ReSukiSU' ]; then
-            echo 'CONFIG_KSU_FULL_NAME_FORMAT="%TAG_NAME%-%COMMIT_SHA%-Re-TG@qdykernel"' >> ./common/arch/arm64/configs/gki_defconfig
+            echo 'CONFIG_KSU_FULL_NAME_FORMAT="%TAG_NAME%-%COMMIT_SHA%-Re-TG@Ricardo"' >> ./common/arch/arm64/configs/gki_defconfig
           fi
           
           echo "CONFIG_CRYPTO_LZ4=y" >> ./common/arch/arm64/configs/gki_defconfig
